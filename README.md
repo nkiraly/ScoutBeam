@@ -1,6 +1,6 @@
 # ScoutBeam
 
-ScoutBeam is a Computer Vision Processing project that uses a Arduino and a camera to point a flashlight at the designated tracking object by keeping it center frame.
+ScoutBeam is a Computer Vision Processing project that uses an Arduino board and a camera to point a flashlight at the designated tracking object by keeping it center frame.
 
 
 ## Hardware
