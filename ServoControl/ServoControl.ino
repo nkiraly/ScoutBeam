@@ -12,18 +12,18 @@
 #include <Servo.h>  //Used to control the Pan/Tilt Servos
 
 // control command strings
-String commandSetTilt = "TILT";
 String commandSetPan  = "PAN";
+String commandSetTilt = "TILT";
 
 bool announceActions = true;
 
 // servo pin out configuration
-int servoPinTilt = 2;
-int servoPinPan  = 3;
+int servoPinPan  = 2;
+int servoPinTilt = 3;
 
 // servo objects
-Servo servoTilt;
 Servo servoPan;
+Servo servoTilt;
 
 // serial read variables
 String command;
@@ -31,12 +31,12 @@ String data;
 
 void setup() {
   // attach servo objects to hardware pins
-  servoTilt.attach(servoPinTilt);
   servoPan.attach(servoPinPan);
+  servoTilt.attach(servoPinTilt);
 
   // initialize servos at 90 degrees
-  servoTilt.write(90);
   servoPan.write(90);
+  servoTilt.write(90);
 
   // initialize serial connection at 57600
   Serial.begin(57600);
@@ -52,15 +52,6 @@ void loop() {
 
     // with command and data read,
     // act on the command
-    if ( command == commandSetTilt ) {
-      if ( announceActions ) {
-        Serial.print("Set Tilt to  ");
-        Serial.print(data);
-        Serial.println();
-      }
-      // char data at index 0 - 48 = numeric degrees to set servo to
-      servoTilt.write(data.toInt());
-    }
     if ( command == commandSetPan ) {
       if ( announceActions ) {
         Serial.print("Set Pan  to  ");
@@ -68,6 +59,14 @@ void loop() {
         Serial.println();
       }
       servoPan.write(data.toInt());
+    }
+    if ( command == commandSetTilt ) {
+      if ( announceActions ) {
+        Serial.print("Set Tilt to  ");
+        Serial.print(data);
+        Serial.println();
+      }
+      servoTilt.write(data.toInt());
     }
 
   }
