@@ -4,8 +4,8 @@
 * Listen for serial commands to set servo position
 *
 * Hardware Notes
-* - pin 2: Tilt Servo Control - see servoPinTilt
-* - pin 3: Pan Servo Control  - see servoPinPan
+* - pin 2: Pan Servo Control  - see servoPinPan
+* - pin 3: Tilt Servo Control - see servoPinTilt
 * - Supply 9V input to ensure servos have enough power
 */
 
