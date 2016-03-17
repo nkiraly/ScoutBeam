@@ -6,6 +6,9 @@ ScoutBeam is an Arduino Server Controller and Computer Vision Processing project
 ## Hardware
 
 This project was developed using the following hardware
+- [Arduino Uno R3](https://www.sparkfun.com/products/11021)
+- [Pan/Tilt Bracket](https://www.sparkfun.com/products/10335)
+- [Sub-Micro Servo](https://www.sparkfun.com/products/9065)
 
 
 ## ServoControl
