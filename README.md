@@ -13,4 +13,4 @@ This project was developed using the following hardware
 
 ## ServoControl
 
-ServoControl is the Ardunio serial listener that takes servo position commands and issues them to the servos.
+ServoControl is the Arduino serial listener that takes pan and tilt commands and controls the pan and tilt servos accordingly.
