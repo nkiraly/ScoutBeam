@@ -1,6 +1,6 @@
 # ScoutBeam
 
-ScoutBeam is an Arduino Servo Controller and Computer Vision Processing project to control a camera on a servo to point a flashlight at the designated tracking object.
+ScoutBeam is a Computer Vision Processing project that uses a Arduino and a camera to point a flashlight at the designated tracking object by keeping it center frame.
 
 
 ## Hardware
