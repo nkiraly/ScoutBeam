@@ -9,13 +9,15 @@
 * - Supply 9V input to ensure servos have enough power
 */
 
-#include <Servo.h>  //Used to control the Pan/Tilt Servos
+#include <Servo.h>
 
 // control command strings
 String commandSetPan  = "PAN";
 String commandSetTilt = "TILT";
 
+// behavior configuration
 bool announceActions = true;
+bool setupTestMovement = false;
 
 // servo pin out configuration
 int servoPinPan  = 2;
@@ -34,13 +36,52 @@ void setup() {
   servoPan.attach(servoPinPan);
   servoTilt.attach(servoPinTilt);
 
+  // initialize serial connection at 57600
+  Serial.begin(57600);
+
+  // if config says so, do test movement loop
+  if ( setupTestMovement ) {
+    Serial.println("ServoControl Movement Test Starting");
+    testMovement(90, 90, 130, 50);
+    testMovement(130, 50, 50, 130);
+    testMovement(50, 130, 130, 130);
+    testMovement(130, 130, 50, 50);
+    testMovement(50, 50, 90, 90);
+    Serial.println("ServoControl Movement Test Finished");
+  }
+
   // initialize servos at 90 degrees
   servoPan.write(90);
   servoTilt.write(90);
 
-  // initialize serial connection at 57600
-  Serial.begin(57600);
   Serial.println("ServoControl Ready");
+}
+
+void testMovement(int startP, int startT, int finishP, int finishT) {
+  int currentP = startP;
+  int currentT = startT;
+
+  servoPan.write(currentP);
+  servoTilt.write(currentT);
+
+  while( currentP != finishP && currentT != finishT ) {
+    if ( currentP < finishP ) {
+      currentP++;
+    }
+    if ( currentP > finishP ) {
+      currentP--;
+    }
+    if ( currentT < finishT ) {
+      currentT++;
+    }
+    if ( currentT > finishT ) {
+      currentT--;
+    }
+    servoPan.write(currentP);
+    servoTilt.write(currentT);
+    delay(50);
+  }
+  
 }
 
 void loop() {
